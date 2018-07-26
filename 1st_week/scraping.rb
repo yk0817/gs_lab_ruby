@@ -12,16 +12,17 @@ html = open(url) do |f|
   f.read # htmlを読み込んで変数htmlに渡す
 end
 
-p html
+# p html
 
 
 doc = Nokogiri::HTML.parse(html, nil, charset)
 # 扱いやすくなるように修正してもらえる
+# pp doc
 
 # ページ全体から抽出
 # CSSセレクタで抽出、配列と同じように扱える
-pp doc.css(".item").count
-pp doc.css(".item")[0]
+# pp doc.css(".item").count
+# pp doc.css(".item")[0]
 
 # text部分のみを抽出
 # pp doc.css(".item")[0].text
@@ -30,9 +31,9 @@ pp doc.css(".item")[0]
 # pp doc.css(".title").text
 
 # そういうときはeachメソッドが便利
-# doc.css(".title").each do |title|
-#   pp title.text
-# end
+doc.css(".title").each do |title|
+  pp title.text
+end
 
 # 以下、もっと勉強したい人向け(2回目以降取り扱います)
 __END__
