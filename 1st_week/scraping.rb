@@ -5,7 +5,7 @@ url = 'https://gsacademy.tokyo/'
 charset = nil
 html = open(url) do |f|
   # status codeが返る。
-  # p f.status
+  p f.status
   charset = f.charset # 文字種別を取得
   # charset表示
   # p charset
@@ -15,13 +15,13 @@ end
 p html
 
 
-# doc = Nokogiri::HTML.parse(html, nil, charset)
+doc = Nokogiri::HTML.parse(html, nil, charset)
 # 扱いやすくなるように修正してもらえる
 
 # ページ全体から抽出
 # CSSセレクタで抽出、配列と同じように扱える
-# pp doc.css(".item").count
-# pp doc.css(".item")[0]
+pp doc.css(".item").count
+pp doc.css(".item")[0]
 
 # text部分のみを抽出
 # pp doc.css(".item")[0].text
