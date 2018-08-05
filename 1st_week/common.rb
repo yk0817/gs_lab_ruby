@@ -7,9 +7,18 @@ require 'pp'
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 #
 # # active_recordを継承する。
-class Headline < ActiveRecord::Base
+class SchoolBlog < ActiveRecord::Base
+  has_many :headlines, :dependent => :destroy
 end
-#
+
+class Headline < ActiveRecord::Base
+  belongs_to :school_blog
+  has_one :article, :dependent => :destroy
+end
+class Article < ActiveRecord::Base
+  belongs_to :headline
+end
+
 ActiveRecord::Base.establish_connection(
   adapter:  "mysql2",  #アダプター名
   host:     "localhost",  #ホスト名
