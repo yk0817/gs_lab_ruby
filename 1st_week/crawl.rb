@@ -10,12 +10,9 @@ class Crawl
   end
 
   def save_contents
-    save_ary = []
     parse_headlines.each do |url, headline|
-      # いらないものは含めない
       next if url.match(/qiita/)
       next unless url.include?('html')
-      # 保存
       ActiveRecord::Base.transaction do
         headline.save
         @article = parse_article(headline, url)
