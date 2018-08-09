@@ -1,0 +1,12 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <% if @headline.errors %>
+    <%= @headline.errors.messages[:title].first %>
+  <% else %>
+    <p>保存されました。</p>
+  <% end %>
+</body>
+</html>
