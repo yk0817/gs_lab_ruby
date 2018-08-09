@@ -6,7 +6,7 @@ p @headline.errors
 
 # 2.カスタムバリデート
 @headline = Headline.create(title: 'validate_test')
-ActiveModelのインスタンス errorsに返ってくる。
+# ActiveModelのインスタンス errorsに返ってくる。
 p @headline.errors
 
 # 3.6文字超えた場合
@@ -14,5 +14,5 @@ p @headline.errors
 p @headline.errors
 
 # 4.条件付きメソッド
-@headline = Headline.create(title: '20文字以上のつぶやきをするとどうなるんだあああああああーー。')
+# @headline = Headline.create(title: '20文字以上のつぶやきをするとどうなるんだあああああああーー。')
 # p @headline.errors
