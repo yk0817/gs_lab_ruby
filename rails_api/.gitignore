@@ -16,12 +16,9 @@
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+vendor/bundle
 
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
-# install済みbundle
-1st_week/.bundle/
-2nd_week/.bundle/
