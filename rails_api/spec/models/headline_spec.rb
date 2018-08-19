@@ -26,7 +26,7 @@ RSpec.describe Headline, type: :model do
   before { SchoolBlog.create(url: 'https://gsacademy.tokyo/', name: 'gsacademy') }
   # context: 状況を記述
   describe '.create' do
-    context 'School blog not created' do
+    context 'When foreign_key no assigned' do
       let(:headline_ex3){ create :headline , title: "test" }
       it ".raise error" do
         expect { headline_ex3 }.to raise_error(ActiveRecord::AssociationTypeMismatch)
@@ -36,18 +36,18 @@ RSpec.describe Headline, type: :model do
 
   # relationが組まれていないのでbeforeで作成をする
   describe '.create' do
-    context 'School blog not created' do
-      context "when Headline created" do
+    context 'School blog created' do
+      context "when foreign_key assigned" do
         subject { Headline.create( title: 'test', school_blog_id: SchoolBlog.first.id ) }
         it { should be_valid }
       end
     end
   end
 
-  # 即時評価 let!を使う
+  # 即時評価 let!を使ったバージョン
   let!(:school_blog){ create :school_blog, url:  'https://gsacademy.tokyo/', name: 'gsacademy' }
-  describe '.create2' do
-    context "when Headline created" do
+  describe '.create' do
+    context "when foreign_key assigned using let" do
       let(:headline){ create :headline, title: 'test2', school_blog_id: school_blog.id }
       it "headline exists and eq test2" do
         expect(headline.title).to eq 'test2'
