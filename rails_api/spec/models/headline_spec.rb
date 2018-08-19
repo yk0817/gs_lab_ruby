@@ -54,4 +54,19 @@ RSpec.describe Headline, type: :model do
       end
     end
   end
+
+  # バリデーションのテストをしてみましょう
+  # titleカラムを6文字以上記述したらエラーが出るか
+  # describe: テスト対象 ここではcreate
+  # context: 状況を示す ここでは title6文字以上とする
+  # it: 具体例(期待する戻り値)を記述
+  describe '.create' do
+    let(:validation_test){ create :headline, title: 'validation_test_title', school_blog_id: school_blog.id }
+    context "when create title more than 7 letters" do
+      it "does not save headline data" do
+        expect{ validation_test }.to raise_error(ActiveRecord::RecordInvalid)
+      end
+    end
+  end
+
 end
