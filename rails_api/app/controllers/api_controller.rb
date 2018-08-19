@@ -1,15 +1,17 @@
 class ApiController < ApplicationController
-  before_action :valid_parameters?
-  # include BeforeAction
+  # before_action :valid_parameters?
+  include BeforeAction
   def index
+    # モデル データを取ってくる
     @headlines = Headline.all
-    # render json: @headlines
+    # 出力
+    render json: @headlines
     # render :status => 200
-    send_data(
-      csv_data,
-      type: 'text/csv; charset=utf-8',
-      filename: "test.csv"
-    )
+    # send_data(
+    #   csv_data,
+    #   type: 'text/csv; charset=utf-8',
+    #   filename: "test.csv"
+    # )
   end
 
   private
