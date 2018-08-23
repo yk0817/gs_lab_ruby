@@ -43,13 +43,13 @@ RSpec.describe Headline, type: :model do
     end
   end
 
-  describe "" do
+  describe ".create" do
     # ブロックの中で評価される
     # before do
     #   Headline.create(title: "test", school_blog_id: SchoolBlog.first.id)
     # end
     let!(:headline_ex4){ create :headline, title: "test", school_blog_id: SchoolBlog.first.id }
-    it "title eq tewst" do
+    it "title eq test" do
       expect(Headline.first.title).to eq "test"
     end
     it "Headline model data exists" do
